@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Message Assistant</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <header>
+    <h1>LinkedIn Assistant</h1>
+    <p>Manage profiles and prepare message drafts.</p>
+  </header>
+
+  <main>
+    <section>
+      <label for="profileUrls">LinkedIn Profile URLs</label>
+
+      <textarea
+        id="profileUrls"
+        placeholder="Paste profile URLs here, one per line..."
+      ></textarea>
+
+      <button id="processUrls">Load Profiles</button>
+
+      <p id="urlStatus" role="status"></p>
+    </section>
+
+    <section>
+      <h2>Profiles</h2>
+      <ul id="profileList"></ul>
+    </section>
+
+    <section>
+      <h2>Message Mode</h2>
+
+      <label for="messageMode">Choose a mode</label>
+      <select id="messageMode">
+        <option value="ai">AI-generated message</option>
+        <option value="personalized">Personalized message</option>
+      </select>
+
+      <p id="messageModeHelp">
+        Prepare a draft using information you are authorized to use.
+      </p>
+    </section>
+  </main>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
