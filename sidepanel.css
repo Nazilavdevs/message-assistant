@@ -695,6 +695,62 @@ button:disabled {
 }
 
 
+/* Profile Name */
+
+
+.recipient-name-input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 7px;
+  padding: 7px 8px;
+  border: 1px solid #e3eaf4;
+  border-radius: 7px;
+  outline: none;
+  color: #243750;
+  background: #ffffff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.recipient-name-input:focus {
+  border-color: #6ba7ed;
+  box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.08);
+}
+
+
+/* Recipients */
+
+.recipient-display-name {
+  display: block;
+  margin-bottom: 6px;
+  color: #263750;
+  font-size: 13px;
+}
+
+.recipient-list li > a {
+  display: block;
+  margin-bottom: 13px;
+  overflow-wrap: anywhere;
+}
+
+.context-label {
+  display: block;
+  margin-bottom: 7px;
+  color: #536780;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.recipient-context {
+  min-height: 85px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+
+
 /* Review Section */
 
 [hidden] {
