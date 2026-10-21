@@ -4,48 +4,181 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>LinkedIn Message Assistant</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="sidepanel.css">
 </head>
+
 <body>
-  <header>
-    <h1>LinkedIn Assistant</h1>
-    <p>Manage profiles and prepare message drafts.</p>
-  </header>
+  <div class="app-shell">
 
-  <main>
-    <section>
-      <label for="profileUrls">LinkedIn Profile URLs</label>
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">in</div>
 
-      <textarea
-        id="profileUrls"
-        placeholder="Paste profile URLs here, one per line..."
-      ></textarea>
+        <div class="brand-copy">
+          <h1>LinkedIn Assistant</h1>
+          <p>Connect. Build. Grow.</p>
+        </div>
+      </div>
 
-      <button id="processUrls">Load Profiles</button>
+      <div class="header-badge" title="Extension ready">
+        <span class="status-dot"></span>
+        Ready
+      </div>
+    </header>
 
-      <p id="urlStatus" role="status"></p>
-    </section>
+    <main class="main-content">
 
-    <section>
-      <h2>Profiles</h2>
-      <ul id="profileList"></ul>
-    </section>
+      <section class="card">
+        <div class="section-heading">
+          <div class="section-icon blue-icon">↗</div>
 
-    <section>
-      <h2>Message Mode</h2>
+          <div class="heading-copy">
+            <h2>Add profiles</h2>
+            <p>One LinkedIn profile URL per line</p>
+          </div>
+        </div>
 
-      <label for="messageMode">Choose a mode</label>
-      <select id="messageMode">
-        <option value="ai">AI-generated message</option>
-        <option value="personalized">Personalized message</option>
-      </select>
+        <label class="field-label" for="profileUrls">
+          Profile URLs
+        </label>
 
-      <p id="messageModeHelp">
-        Prepare a draft using information you are authorized to use.
-      </p>
-    </section>
-  </main>
+        <textarea
+          id="profileUrls"
+          placeholder="https://www.linkedin.com/in/person-one/&#10;https://www.linkedin.com/in/person-two/"
+          spellcheck="false"
+        ></textarea>
+
+        <div class="input-footer">
+          <span class="helper-text">
+            <span class="info-icon">i</span>
+            LinkedIn profile URLs only
+          </span>
+        </div>
+
+        <button id="processUrls" class="primary-button">
+          <span>Load profiles</span>
+          <span class="button-arrow">→</span>
+        </button>
+
+        <p id="urlStatus" class="status-message" role="status">
+          Paste profile URLs to get started.
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading profile-heading">
+          <div class="section-icon purple-icon">♙</div>
+
+          <div class="heading-copy">
+            <h2>Your profiles</h2>
+            <p>Review your recipient list</p>
+          </div>
+
+          <span id="profileCount" class="count-badge">0</span>
+        </div>
+
+        <div class="profile-summary">
+          <span class="summary-dot"></span>
+          <span id="validCount">0 profiles loaded</span>
+        </div>
+
+        <div class="profile-list-wrapper">
+          <ul id="profileList" class="profile-list"></ul>
+        </div>
+
+        <p id="emptyState" class="empty-state">
+          <span class="empty-icon">↗</span>
+          <strong>No profiles yet</strong>
+          <span>Your loaded profiles will appear here.</span>
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div class="section-icon green-icon">✳</div>
+
+          <div class="heading-copy">
+            <h2>Message strategy</h2>
+            <p>Choose how messages will be prepared</p>
+          </div>
+        </div>
+
+        <div class="mode-options">
+
+          <label class="mode-card selected" for="modeAi">
+            <input
+              type="radio"
+              id="modeAi"
+              name="messageMode"
+              value="ai"
+              checked
+            >
+
+            <div class="mode-icon ai-icon">✧</div>
+
+            <div class="mode-copy">
+              <div class="mode-title">
+                AI-generated
+                <span class="recommended-badge">AI</span>
+              </div>
+
+              <p>Generate a suitable draft using authorized information.</p>
+            </div>
+          </label>
+
+          <label class="mode-card" for="modePersonalized">
+            <input
+              type="radio"
+              id="modePersonalized"
+              name="messageMode"
+              value="personalized"
+            >
+
+            <div class="mode-icon personal-icon">♙</div>
+
+            <div class="mode-copy">
+              <div class="mode-title">Personalized</div>
+              <p>Prepare recipient-specific messages from your input.</p>
+            </div>
+          </label>
+
+        </div>
+
+        <div class="notice">
+          <span class="notice-icon">i</span>
+          <p>You can change your message strategy before reviewing drafts.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="bottom-bar">
+      <div class="bottom-summary">
+        <div class="summary-icon">✓</div>
+
+        <div>
+          <strong id="footerCount">0 profiles ready</strong>
+          <p>Ready for review</p>
+        </div>
+      </div>
+
+      <button id="continueButton" class="continue-button" disabled>
+        Continue
+        <span>→</span>
+      </button>
+    </footer>
+
+  </div>
 
   <script src="sidepanel.js"></script>
 </body>
