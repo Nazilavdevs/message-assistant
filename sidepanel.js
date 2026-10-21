@@ -32,11 +32,25 @@ function isValidLinkedInProfile(urlString) {
   }
 }
 
+
+const searchProfiles = document.getElementById("searchProfiles");
+const clearProfilesButton = document.getElementById("clearProfiles");
+
 function renderProfiles() {
+  const searchTerm = searchProfiles.value.trim().toLowerCase();
+
+  const filteredProfiles = profiles.filter((profile) =>
+    profile.url.toLowerCase().includes(searchTerm)
+  );
+
   profileList.replaceChildren();
 
-  profiles.forEach((profile) => {
+  filteredProfiles.forEach((profile) => {
     const item = document.createElement("li");
+    item.className = "profile-row";
+
+    const details = document.createElement("div");
+    details.className = "profile-details";
 
     const link = document.createElement("a");
     link.href = profile.url;
@@ -47,24 +61,73 @@ function renderProfiles() {
     const status = document.createElement("div");
     status.textContent = profile.status;
 
-    item.append(link, status);
+    details.append(link, status);
+
+    const actions = document.createElement("div");
+    actions.className = "profile-actions";
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className = "profile-action remove";
+    removeButton.textContent = "Remove";
+    removeButton.setAttribute(
+      "aria-label",
+      `Remove ${profile.url}`
+    );
+
+    removeButton.addEventListener("click", () => {
+      profiles = profiles.filter(
+        (entry) => entry.url !== profile.url
+      );
+
+      renderProfiles();
+    });
+
+    actions.appendChild(removeButton);
+    item.append(details, actions);
     profileList.appendChild(item);
   });
 
-  const count = profiles.length;
+  if (filteredProfiles.length === 0 && profiles.length > 0) {
+    const item = document.createElement("li");
+    item.className = "no-results";
+    item.textContent = "No matching profiles found.";
+    profileList.appendChild(item);
+  }
 
-  profileCount.textContent = count;
+  profileCount.textContent = profiles.length;
+
   validCount.textContent =
-    `${count} valid profile${count === 1 ? "" : "s"} loaded`;
+    `${profiles.length} valid profile(s) loaded`;
 
   footerCount.textContent =
-    `${count} profile${count === 1 ? "" : "s"} ready`;
+    `${profiles.length} profile(s) ready`;
 
-  emptyState.hidden = count > 0;
+  emptyState.hidden = profiles.length > 0;
 
-  // Continue will be enabled when we implement the next workflow.
-  continueButton.disabled = true;
+  continueButton.disabled = profiles.length === 0;
 }
+
+searchProfiles.addEventListener("input", renderProfiles);
+
+clearProfilesButton.addEventListener("click", () => {
+  if (profiles.length === 0) return;
+
+  const confirmed = confirm(
+    "Are you sure you want to remove all loaded profiles?"
+  );
+
+  if (!confirmed) return;
+
+  profiles = [];
+  profileUrlsInput.value = "";
+  searchProfiles.value = "";
+
+  renderProfiles();
+
+  urlStatus.textContent = "All profiles have been cleared.";
+});
+
 
 processUrlsButton.addEventListener("click", () => {
   const inputLines = profileUrlsInput.value

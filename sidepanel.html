@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="sidepanel.css">
 </head>
@@ -52,11 +49,9 @@
           Profile URLs
         </label>
 
-        <textarea
-          id="profileUrls"
+        <textarea id="profileUrls"
           placeholder="https://www.linkedin.com/in/person-one/&#10;https://www.linkedin.com/in/person-two/"
-          spellcheck="false"
-        ></textarea>
+          spellcheck="false"></textarea>
 
         <div class="input-footer">
           <span class="helper-text">
@@ -92,9 +87,18 @@
           <span id="validCount">0 profiles loaded</span>
         </div>
 
+        <div class="profile-toolbar">
+          <input id="searchProfiles" type="search" placeholder="Search profiles..." aria-label="Search profiles">
+
+          <button id="clearProfiles" class="text-button" type="button">
+            Clear all
+          </button>
+        </div>
+
         <div class="profile-list-wrapper">
           <ul id="profileList" class="profile-list"></ul>
         </div>
+
 
         <p id="emptyState" class="empty-state">
           <span class="empty-icon">↗</span>
@@ -116,13 +120,7 @@
         <div class="mode-options">
 
           <label class="mode-card selected" for="modeAi">
-            <input
-              type="radio"
-              id="modeAi"
-              name="messageMode"
-              value="ai"
-              checked
-            >
+            <input type="radio" id="modeAi" name="messageMode" value="ai" checked>
 
             <div class="mode-icon ai-icon">✧</div>
 
@@ -137,12 +135,7 @@
           </label>
 
           <label class="mode-card" for="modePersonalized">
-            <input
-              type="radio"
-              id="modePersonalized"
-              name="messageMode"
-              value="personalized"
-            >
+            <input type="radio" id="modePersonalized" name="messageMode" value="personalized">
 
             <div class="mode-icon personal-icon">♙</div>
 
@@ -182,4 +175,5 @@
 
   <script src="sidepanel.js"></script>
 </body>
+
 </html>
