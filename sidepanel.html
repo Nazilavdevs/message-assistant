@@ -33,8 +33,7 @@
       </div>
     </header>
 
-    <main class="main-content">
-
+    <main id="profilesScreen" class="main-content">
       <section class="card">
         <div class="section-heading">
           <div class="section-icon blue-icon">↗</div>
@@ -170,6 +169,110 @@
         <span>→</span>
       </button>
     </footer>
+
+
+    <section id="messageScreen" class="message-screen" hidden>
+
+      <header class="message-header">
+        <button id="backButton" class="back-button" type="button">
+          ← Back to profiles
+        </button>
+
+        <div class="message-title">
+          <span class="eyebrow">STEP 2 OF 2</span>
+          <h2>Prepare your message</h2>
+          <p>Review your recipients and create your draft.</p>
+        </div>
+      </header>
+
+      <section class="card">
+        <div class="section-heading">
+          <div class="section-icon purple-icon">♙</div>
+
+          <div class="heading-copy">
+            <h2>Selected recipients</h2>
+            <p id="recipientSummary">0 recipients selected</p>
+          </div>
+        </div>
+
+        <ul id="recipientList" class="recipient-list"></ul>
+
+        <button id="editRecipients" class="secondary-button" type="button">
+          Edit recipients
+        </button>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div class="section-icon blue-icon">✧</div>
+
+          <div class="heading-copy">
+            <h2>Message draft</h2>
+            <p>Write a message for your selected recipients.</p>
+          </div>
+        </div>
+
+        <label class="field-label" for="messageTemplate">
+          Message
+        </label>
+
+        <textarea id="messageTemplate" class="message-editor"
+          placeholder="Hi [First Name],&#10;&#10;Write your message here..."></textarea>
+
+        <div class="editor-footer">
+          <span id="characterCount">0 characters</span>
+          <span>Draft only · Nothing will be sent</span>
+        </div>
+
+        <div class="draft-actions">
+          <button id="clearDraft" class="secondary-button" type="button">
+            Clear draft
+          </button>
+
+          <button id="saveDraft" class="primary-button" type="button">
+            Save draft
+          </button>
+        </div>
+
+        <p id="draftStatus" class="status-message" role="status"></p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div class="section-icon green-icon">✓</div>
+
+          <div class="heading-copy">
+            <h2>Review checklist</h2>
+            <p>Make sure your message is ready for review.</p>
+          </div>
+        </div>
+
+        <div class="review-item">
+          <span class="review-check">✓</span>
+          <span>Recipients selected</span>
+          <strong id="recipientCheck">Pending</strong>
+        </div>
+
+        <div class="review-item">
+          <span class="review-check">✓</span>
+          <span>Message draft written</span>
+          <strong id="messageCheck">Pending</strong>
+        </div>
+      </section>
+
+      <footer class="message-footer">
+        <div>
+          <strong id="draftFooterCount">0 recipients</strong>
+          <p>Draft preparation only</p>
+        </div>
+
+        <button id="reviewButton" class="continue-button" type="button" disabled>
+          Review draft →
+        </button>
+      </footer>
+
+    </section>
+
 
   </div>
 
