@@ -2,11 +2,12 @@
 {
   "manifest_version": 3,
   "name": "LinkedIn Message Assistant",
-  "version": "0.1.0",
-  "description": "Manage LinkedIn profile URLs and prepare message drafts.",
+  "version": "0.2.0",
+  "description": "Review LinkedIn profiles one at a time.",
   "permissions": [
     "sidePanel",
-    "storage"
+    "storage",
+    "tabs"
   ],
   "background": {
     "service_worker": "background.js"
@@ -15,6 +16,6 @@
     "default_title": "Open LinkedIn Message Assistant"
   },
   "side_panel": {
-    "default_path": "sidepanel.html"
+    "default_path": "queue.html"
   }
 }
