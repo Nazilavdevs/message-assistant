@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,63 +9,125 @@
 </head>
 <body>
   <main class="app">
+
     <header class="header">
       <div class="brand-icon">in</div>
       <div>
         <p class="eyebrow">LINKEDIN WORKFLOW</p>
         <h1>Profile Queue</h1>
-        <p class="subtitle">Work through profiles one at a time.</p>
+        <p class="subtitle">Review profiles and process your tasks.</p>
       </div>
     </header>
 
-    <section class="progress-section" aria-label="Queue progress">
-      <div class="progress-label">
-        <span id="progressText">Profile 1 of 3</span>
-        <span id="progressPercent">0%</span>
+    <!-- SCREEN 1: List of all profiles -->
+    <section id="profileListScreen">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR TASKS</p>
+          <h2>Profiles to review</h2>
+        </div>
+        <span id="profileCount" class="count-badge">0 profiles</span>
       </div>
-      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+
+      <p class="screen-description">
+        Review your profile list before starting the queue.
+      </p>
+
+      <div id="profileList" class="profile-list"></div>
+
+      <button id="startQueueButton" class="button primary full-width"
+              type="button">
+        Start Queue →
+      </button>
+
+
     </section>
 
-    <section id="profileCard" class="card">
-      <div class="card-topline">
-        <span class="eyebrow">CURRENT PROFILE</span>
-        <span id="taskBadge" class="task-badge">MESSAGE</span>
-      </div>
-      <h2 id="profileName">Profile name</h2>
+    <!-- SCREEN 2: Active queue -->
+    <section id="queueScreen" hidden>
 
-      <div class="field">
-        <span class="field-label">LinkedIn URL</span>
-        <a id="profileUrl" class="profile-url" href="#" target="_blank" rel="noopener noreferrer"></a>
-      </div>
-      <div class="field">
-        <span class="field-label">Context</span>
-        <p id="profileContext" class="field-value"></p>
-      </div>
-      <!-- <div class="field">
-        <span class="field-label">Requested task</span>
-        <p id="profileAction" class="field-value"></p>
-      </div> -->
+      <section id="progressSection" class="progress-section"
+               aria-label="Queue progress">
 
-      <button id="openProfile" class="button primary" type="button">Open Profile ↗ </button>
+        <div class="progress-label">
+          <span id="progressText">Profile 1 of 3</span>
+          <span id="progressPercent">0%</span>
+        </div>
+
+        <div class="progress-track">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+
+      </section>
+
+      <section id="profileCard" class="card">
+
+        <div class="card-topline">
+          <span class="eyebrow">CURRENT PROFILE</span>
+          <span id="taskBadge" class="task-badge">MESSAGE</span>
+        </div>
+
+        <h2 id="profileName">Profile name</h2>
+
+        <div class="field">
+          <span class="field-label">LinkedIn URL</span>
+          <a id="profileUrl" class="profile-url"
+             href="#" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Context</span>
+          <p id="profileContext" class="field-value"></p>
+        </div>
+
+        <button id="openProfile" class="button primary full-width"
+                type="button">
+          Open Profile ↗
+        </button>
+
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite">
+        Ready to begin.
+      </p>
+
+      <div class="actions">
+        <button id="previousProfile" class="button secondary"
+                type="button">
+          ← Previous
+        </button>
+
+        <button id="nextProfile" class="button primary"
+                type="button">
+          Done &amp; Next →
+        </button>
+      </div>
+
+      <button id="restartQueue" class="link-button" type="button">
+        ↻ Back to profile list
+      </button>
+
     </section>
 
-    <p id="status" class="status" role="status" aria-live="polite">Ready to begin.</p>
-
-    <div id="queueContent" class="actions">
-      <button id="previousProfile" class="button secondary" type="button">← Previous</button>
-      <button id="nextProfile" class="button primary" type="button">Done &amp; Next →</button>
-    </div>
-
-    <button id="restartQueue" class="link-button" type="button">Restart queue</button>
-
+    <!-- SCREEN 3: Completion -->
     <section id="completeCard" class="card complete-card" hidden>
+
       <div class="complete-icon">✓</div>
-      <h2>Queue completed</h2>
+
+      <h2>Queue completed!</h2>
+
       <p id="completeSummary" class="field-value"></p>
-      <button id="startAgainButton" class="button primary" type="button">Start again</button>
+
+      <button id="startAgainButton" class="button primary full-width"
+              type="button">
+        Back to Profile List
+      </button>
+
     </section>
 
   </main>
+
   <script src="queue.js"></script>
 </body>
 </html>
